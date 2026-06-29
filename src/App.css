@@ -1,184 +1,180 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+/* Pengaturan Dasar */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.hero {
+body, html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Navbar */
+.navbar {
+  background-color: #ea580c; /* Warna Orange-600 */
+  color: white;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 1000;
   position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
 }
 
-#center {
+.navbar h1 {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Layout Utama */
+.main-container {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 56px);
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 33.333%;
+  background-color: #f9fafb;
+  border-right: 1px solid #e5e7eb;
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
+  overflow-y: auto;
 }
 
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
+.sidebar h2 {
+  font-size: 1.25rem;
+  color: #1f2937;
+  margin-bottom: 10px;
 }
 
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
+.input-control {
   width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ea580c;
+  border-radius: 6px;
+  font-size: 14px;
+}
 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
+/* Kontainer List UMKM */
+.umkm-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-bottom: 15px;
+}
 
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
+.umkm-card {
+  padding: 12px;
+  background-color: white;
+  border-left: 4px solid #ea580c;
+  border-radius: 0 6px 6px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.umkm-card:hover, .umkm-card.active {
+  background-color: #fff7ed; /* Orange muda hangat */
+}
+
+.umkm-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.umkm-title {
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.umkm-distance {
+  font-size: 12px;
+  color: #ea580c;
+  font-weight: bold;
+}
+
+.umkm-address {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Box Kotak Ulasan */
+.review-box {
+  padding: 12px;
+  background-color: white;
+  border: 1px solid #ea580c;
+  border-radius: 6px;
+  margin-top: auto;
+}
+
+.review-box h4 {
+  font-size: 14px;
+  color: #ea580c;
+  margin-bottom: 8px;
+}
+
+.review-list {
+  background-color: #f9fafb;
+  max-h: 100px;
+  overflow-y: auto;
+  padding: 8px;
+  font-size: 11px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+}
+
+.review-item {
+  border-bottom: 1px solid #e5e7eb;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+}
+
+.review-form input, .review-form select, .review-form textarea {
+  width: 100%;
+  padding: 5px;
+  font-size: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  margin-bottom: 6px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 6px;
+  background-color: #f97316;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* Map */
+.map-wrapper {
+  width: 66.666%;
+  height: 100%;
+  position: relative;
+}
+
+/* Responsif Ponsel */
+@media (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
   }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
+  .sidebar, .map-wrapper {
+    width: 100%;
+    height: 50%;
   }
 }
